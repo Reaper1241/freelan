@@ -1,0 +1,85 @@
+<template>
+    <main class="main__purple">
+        <div class="help__container">
+            <h1 class="help_h1"> 
+                Чем я могу Вам помочь?
+            </h1>
+            <div>
+                <h2 class="h2">
+                    Военнослужащим: самые частые вопросы
+                </h2>
+                <ul class="ul">
+                    <li class="li">Мне не проводят военно-врачебную комиссию (ВВК) после ранения/не дали пройти ВВК до конца и отправили на боевые задачи;</li>
+                    <li class="li">Хочу оспорить ВВК;</li>
+                    <li class="li">Меня не отпускают в положенный отпуск;</li>
+                    <li class="li">Меня не списывают, хотя я не годен/ограниченно годен (есть нюансы);</li>
+                    <li class="li">Я получил ранение в бою, но никаких выплат нет;</li>
+                    <li class="li">Гражданский муж погиб на СВО, есть ребенок, какие выплаты положены;</li>
+                    <li class="li">Мне не платят денежное довольствие;</li>
+                    <li class="li">И иные вопросы, связанные с прохождением военной службы.</li>
+                </ul>
+            </div>
+            <div class="help__button">
+                <a class="button" href="/">Записаться на консультацию</a>
+            </div>
+        </div>
+    </main>
+</template>
+
+<style  lang="css" scoped>
+.main__purple{
+    background: rgb(75, 0, 75);
+    width: 100%;
+}
+.help__container{
+    display: flex;
+    margin: 0 auto;
+    max-width: 1400px;
+    flex-direction: column;
+    justify-content: center;
+}
+.help_h1{
+    color: white;
+    font-size: 50px;    
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.h2{
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    margin-top: 30px;
+}
+.ul{
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 20px;
+}
+.li{
+    color: white;
+    font-size: 24px;
+}
+.help__button{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    border: 1px solid rgb(74, 0, 104);
+    padding: 10px 20px;
+    width: 290px;
+    border-radius: 8px;
+    background: rgb(74, 0, 104);
+}
+.button{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+</style>
