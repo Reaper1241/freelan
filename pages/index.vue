@@ -8,6 +8,11 @@ import MainHello from '~/components/MainHello.vue';
     <MainHello />
     <MainHelp />
     <MainPractice />
+    <MainAboutMe/>
     <MainPrice/>
+    <MainHow/>
+    <MainNews/>
+    <MainContact/>
+    <!-- <MainFooter/> -->
   </div>
 </template>
