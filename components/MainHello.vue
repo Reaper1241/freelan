@@ -29,10 +29,10 @@
 .main{
     max-width: 1400px;
     display: flex;
+
     gap: 35px;
     justify-content: center;
     margin: 20px auto;
-    
 }
 .main__img{
     width: 550px;
@@ -43,6 +43,7 @@
     width: 550px;
     background: rgb(75, 0, 75);
     border-radius: 30px;
+
 }
 .right__block-main-inner{
     padding: 40px;
@@ -53,5 +54,37 @@
 }
 .main_p{
     color: white;
+}
+@media (max-width: 767px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        width: 100%;
+    }
+    
+    .main__img {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .right__block-main {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 20px;
+    }
+    
+    .right__block-main-inner {
+        padding: 20px;
+    }
+    
+    .main_h1 {
+        font-size: 1.5rem;
+    }
+    
+    .main_p {
+        font-size: 0.9rem;
+    }
 }
 </style>

@@ -13,6 +13,6 @@ import MainHello from '~/components/MainHello.vue';
     <MainHow/>
     <MainNews/>
     <MainContact/>
-    <!-- <MainFooter/> -->
+    <MainFooter/>
   </div>
 </template>
