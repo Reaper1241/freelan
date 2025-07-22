@@ -1,182 +1,276 @@
-<script>
-export default {
-  data() {
-    return {
-      formData: {
-        name: '',
-        email: '',
-        phone: ''
-      },
-      isLoading: false,
-      error: null
-    }
-  },
-  methods: {
-    async submitForm() {
-      // Валидация на клиенте
-      if (!this.formData.name || !this.formData.email || !this.formData.phone) {
-        this.error = 'Все поля обязательны для заполнения';
-        return;
-      }
+<script setup>
+const formData = reactive({
+  name: '',
+  email: '',
+  phone: '',
+  text: ''
+});
 
-      // Проверка email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(this.formData.email)) {
-        this.error = 'Пожалуйста, введите корректный email';
-        return;
-      }
+const isLoading = ref(false);
+const errorMessage = ref('');
 
-      this.isLoading = true;
-      this.error = null;
-
-      try {
-        const response = await fetch('http://localhost:5000/api/consultations', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: this.formData.name.trim(),
-            email: this.formData.email.trim(),
-            phone: this.formData.phone.trim()
-          })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || 'Ошибка при отправке данных');
-        }
-
-        // Успешная отправка
-        this.$emit('form-submitted', data.data); // Можно использовать для родительского компонента
-        
-        // Показываем уведомление
-        this.showNotification('Ваша заявка успешно отправлена!', 'success');
-        
-        // Очищаем форму
-        this.resetForm();
-
-      } catch (error) {
-        console.error('Ошибка:', error);
-        this.error = error.message || 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.';
-        this.showNotification(this.error, 'error');
-      } finally {
-        this.isLoading = false;
-      }
-    },
-    resetForm() {
-      this.formData = {
-        name: '',
-        email: '',
-        phone: ''
-      };
-    },
-    showNotification(message, type = 'success') {
-      // Здесь можно интегрировать с библиотекой уведомлений (Toast, Notify и т.д.)
-      // Или просто использовать alert для простоты
-      alert(`${type === 'success' ? '✓' : '⚠'} ${message}`);
-    }
+const validateForm = () => {
+  if (!formData.name.trim()) {
+    errorMessage.value = 'Пожалуйста, введите ваше имя';
+    return false;
   }
-}
+  
+  if (!formData.email.trim()) {
+    errorMessage.value = 'Пожалуйста, введите email';
+    return false;
+  } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+    errorMessage.value = 'Пожалуйста, введите корректный email';
+    return false;
+  }
+  
+  if (!formData.text.trim()) {
+    errorMessage.value = 'Пожалуйста, введите текст сообщения';
+    return false;
+  }
+  
+  errorMessage.value = '';
+  return true;
+};
+
+const submitForm = async () => {
+  if (!validateForm()) return;
+  
+  isLoading.value = true;
+  
+  try {
+    const form = new FormData();
+    form.append('name', formData.name);
+    form.append('email', formData.email);
+    form.append('phone', formData.phone);
+    form.append('text', formData.text);
+    
+    const response = await $fetch('http://localhost:8080/create', {
+      method: 'POST',
+      body: form
+    });
+    
+    alert('Ваша заявка успешно отправлена! ID: ' + response.id);
+    // Сброс формы
+    formData.name = '';
+    formData.email = '';
+    formData.phone = '';
+    formData.text = '';
+  } catch (error) {
+    console.error('Ошибка при отправке:', error);
+    errorMessage.value = 'Произошла ошибка при отправке. Пожалуйста, попробуйте позже.';
+  } finally {
+    isLoading.value = false;
+  }
+};
 </script>
+
 <template>
+  <section id="contacts" class="main-contact">
     <main class="main__white">
-        <div class="container">
-            <h1 class="contact_h1"> 
-                Контакты
-            </h1>
-            <div class="main_block">
-                <div class="left">
-                    <h2 class="phone">+456 344 267 15 24</h2>
-                    <h2 class="email">antonovoleg@service.com</h2>
-                    <p class="address">Москва, регистрационный номер 0/123/45</p>
-                    <div class="links">
-                        <a></a>
-                        <a></a>
-                        <a></a>
-                    </div>
-                </div>
-                <div class="right">
-                    <form @submit.prevent="submitForm">
-                        <input v-model="formData.name" class="input" type="text" placeholder="Имя" name="name" required>
-                        <input v-model="formData.email" class="input" type="email" placeholder="Email" name="email" required>
-                        <input v-model="formData.phone" class="input" type="tel" placeholder="Телефон" name="phone" required>
-                        <button type="submit" class="button">
-                            Записаться на консультацию
-                        </button>
-                    </form>
-                </div>
-            </div>    
-        </div>
+      <div class="container">
+        <h1 class="contact_h1">Контакты</h1>
+        <div class="main_block">
+          <div class="left">
+            <h2 class="phone">+456 344 267 15 24</h2>
+            <h2 class="email">antonovoleg@service.com</h2>
+            <p class="address">Москва, регистрационный номер 0/123/45</p>
+          </div>
+          <div class="right">
+            <form class="form" @submit.prevent="submitForm">
+              <input v-model="formData.name" class="input" type="text" placeholder="Имя" required>
+              <input v-model="formData.email" class="input" type="email" placeholder="Email" required>
+              <input v-model="formData.phone" class="input" type="tel" placeholder="Телефон">
+              <textarea v-model="formData.text" class="input textarea" placeholder="Ваше сообщение" required></textarea>
+              
+              <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+              
+              <button type="submit" class="button" :disabled="isLoading">
+                {{ isLoading ? 'Отправка...' : 'Отправить сообщение' }}
+              </button>
+            </form>
+          </div>
+        </div>    
+      </div>
     </main>
+  </section>
 </template>
 
-
 <style lang="css" scoped>
-/* Ваши существующие стили остаются без изменений */
-.main__white{
+.main__white {
     background: white;
     width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
-.container{
+
+.error-message {
+  color: #ff3333;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.container {
     display: flex;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1200px;
     flex-direction: column;
     justify-content: center;
+    padding: 0 20px;
 }
-.contact_h1{
+
+.contact_h1 {
     color: black;
-    font-size: 40px;    
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 60px 0 40px;
 }
-.main_block{
+
+.main_block {
     display: flex;
     justify-content: space-between;
-    width: 800px;
+    width: 100%;
+    max-width: 900px;
     margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-.left{
+.left {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 300px;
 }
 
-.right{
+.right {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    flex: 1;
+    min-width: 300px;
 }
-.input{
-    width: 350px;
-    height: 55px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding-left: 15px;
+
+.phone, .email {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.address {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
     box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
+
+.input:focus {
+    border-color: #4567ff;
+    outline: none;
+}
+
+.textarea {
+    height: 120px;
+    padding: 15px;
+    resize: vertical;
+    min-height: 100px;
+}
+
 .input::placeholder {
-    padding-left: 5px;
     color: #999;
+    font-size: 0.95rem;
 }
-.button{
+
+.button {
     display: flex;
     justify-content: center;
-    width: 350px;
+    width: 100%;
     background-color: rgb(69, 69, 255);
     color: white;
-    height: 55px;
+    height: 50px;
     align-items: center;
     border: none;
     border-radius: 6px;
-    margin-bottom: 50px;
+    margin: 20px 0 50px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.form{
+  gap: 10px;
 }
 .button:hover {
     background-color: rgb(50, 50, 220);
+    transform: translateY(-2px);
+}
+    .input{
+      margin-bottom: 10px;
+    }
+.button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .contact_h1 {
+        font-size: 2rem;
+        margin: 40px 0 30px;
+    }
+    
+    .main_block {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .input{
+      margin-bottom: 10px;
+    }
+    .left, .right {
+        min-width: 100%;
+    }
+    .form{
+      gap: 10px;
+    }
+    .phone, .email {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact_h1 {
+        font-size: 1.8rem;
+        margin: 30px 0 25px;
+    }
+    .form{
+      gap: 10px;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    
+    .phone, .email {
+        font-size: 1.1rem;
+    }
+    
+    .input {
+        height: 45px;
+        font-size: 0.95rem;
+    }
+    
+    .button {
+        height: 45px;
+        font-size: 0.95rem;
+    }
 }
 </style>
