@@ -118,11 +118,13 @@
 }
 
 .upper-p{
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(70, 70, 70);
-    line-height: 1.5;
+    line-height: 1.35;
     margin-bottom: 20px;
     text-align: justify;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
 }
 
 .h2{
@@ -145,6 +147,9 @@
     font-size: 18px;
     line-height: 1.5;
     text-align: justify;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
+    color: #000000;
 }
 
 .approach{
@@ -158,6 +163,8 @@
     color: rgb(70, 70, 70);
     font-size: 18px;
     line-height: 1.5;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
 }
 
 .not_work{
@@ -171,6 +178,8 @@
     color: rgb(70, 70, 70);
     font-size: 18px;
     line-height: 1.5;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
 }
 
 .myself{
@@ -184,6 +193,8 @@
     color: rgb(70, 70, 70);
     font-size: 18px;
     line-height: 1.5;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
 }
 
 /* Медиа-запросы для адаптивности */

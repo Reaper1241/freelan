@@ -85,8 +85,12 @@
 
 .li{
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     text-align: left;
+    font-weight: 400;
+    font-family: 'Georgia';
+    line-height: 48px;
+    font-style: italic;
 }
 
 .help__button{
@@ -127,6 +131,7 @@
     
     .li {
         font-size: 18px;
+        line-height: 28px;
     }
     
     .ul {

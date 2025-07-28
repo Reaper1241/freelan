@@ -51,9 +51,14 @@
 
 .main_h1{
     color: white;
+    font-family: 'Georgia';
+    font-weight: 400;
 }
 .main_p{
     color: white;
+    font-family: 'Georgia';
+    font-size: 14px;
+    line-height: 1.45;
 }
 @media (max-width: 767px) {
     .main {

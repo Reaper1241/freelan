@@ -104,6 +104,9 @@
     text-align: center;
     color: #666;
     line-height: 1.5;
+    font-family: 'TildaSans', Arial, sans-serif;
+    font-weight: 300;
+    font-style: italic;
 }
 
 .card-block{
