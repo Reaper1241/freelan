@@ -44,7 +44,7 @@ const submitForm = async () => {
     form.append('phone', formData.phone);
     form.append('text', formData.text);
     
-    const response = await $fetch('http://localhost:8080/create', {
+    const response = await $fetch('http://81.19.136.16/api/create', {
       method: 'POST',
       body: form
     });
