@@ -62,7 +62,7 @@
 
 <style lang="css" scoped>
 .main__white{
-    background: white;
+    background: rgb(228, 228, 228);
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -119,7 +119,7 @@
 
 .card{
     min-height: 70px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #c7c7c7;
     display: flex;
     align-items: center;
     justify-content: space-between;

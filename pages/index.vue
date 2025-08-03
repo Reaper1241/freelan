@@ -10,7 +10,7 @@ import MainHello from '~/components/MainHello.vue';
     <MainPractice />
     <MainAboutMe/>
     <MainPrice/>
-    <MainHow/>
+    <!-- <MainHow/> -->
     <MainNews/>
     <MainContact/>
     <MainFooter/>
