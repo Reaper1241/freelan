@@ -5,28 +5,97 @@
                 Правовые новости и полезные материалы
             </h1>
             <div class="news_block">
-                <div class="news_card">
-                    <img src="public/news1.jpg" class="news_img" alt="Новость 1">
-                    <h2 class="news_h2">О защите персональных данных</h2>
-                    <p class="news_p">Парижская конвенция по охране промышленной собственности в 1883 года.</p>
-                </div>
-                <div class="news_card">
-                    <img src="public/news2.jpg" class="news_img" alt="Новость 2">
-                    <h2 class="news_h2">Интеллектуальная собственность</h2>
-                    <p class="news_p">Часто причисляют законы о недобросовестной конкуренции</p>
-                </div>
-                <div class="news_card">
-                    <img src="public/news3.jpg" class="news_img" alt="Новость 3">
-                    <h2 class="news_h2">Оформление недвижимости</h2>
-                    <p class="news_p">Законодательством предусмотрены вычеты на сумму доходов.</p>
+                <div 
+                    class="news_card" 
+                    v-for="(news, index) in visibleNews" 
+                    :key="index"
+                    @click="goToNewsPage(news.id)"
+                >
+                    <img :src="news.image" class="news_img" :alt="news.title">
+                    <h2 class="news_h2">{{ news.title }}</h2>
+                    <p class="news_p">{{ news.shortText }}</p>
                 </div>
             </div>
             <div class="bottom">
-                <a href="#" class="bottom-a">Читать все статьи</a>
+                <a 
+                    href="#" 
+                    class="bottom-a" 
+                    @click.prevent="showAllNews = !showAllNews"
+                >
+                    {{ showAllNews ? 'Скрыть статьи' : 'Читать все статьи' }}
+                </a>
             </div>
         </div>
     </main>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            showAllNews: false,
+            newsList: [
+                {
+                    id: 1,
+                    image: 'public/news1.jpg',
+                    title: 'О защите персональных данных',
+                    shortText: 'Парижская конвенция по охране промышленной собственности в 1883 года.',
+                    fullText: 'Полный текст новости о защите персональных данных...' // Здесь будет полный текст
+                },
+                {
+                    id: 2,
+                    image: 'public/news2.jpg',
+                    title: 'Интеллектуальная собственность',
+                    shortText: 'Часто причисляют законы о недобросовестной конкуренции',
+                    fullText: 'Полный текст новости об интеллектуальной собственности...'
+                },
+                {
+                    id: 3,
+                    image: 'public/news3.jpg',
+                    title: 'Оформление недвижимости',
+                    shortText: 'Законодательством предусмотрены вычеты на сумму доходов.',
+                    fullText: 'Полный текст новости об оформлении недвижимости...'
+                },
+                {
+                    id: 4,
+                    image: 'public/news4.jpg',
+                    title: 'Налоговое право',
+                    shortText: 'Новые изменения в налоговом кодексе на 2023 год',
+                    fullText: 'Полный текст новости о налоговом праве...'
+                },
+                {
+                    id: 5,
+                    image: 'public/news5.jpg',
+                    title: 'Трудовые споры',
+                    shortText: 'Как правильно оформить увольнение сотрудника',
+                    fullText: 'Полный текст новости о трудовых спорах...'
+                },
+                {
+                    id: 6,
+                    image: 'public/news6.jpg',
+                    title: 'Корпоративное право',
+                    shortText: 'Изменения в законодательстве о ООО и АО',
+                    fullText: 'Полный текст новости о корпоративном праве...'
+                }
+            ]
+        }
+    },
+    computed: {
+        visibleNews() {
+            return this.showAllNews ? this.newsList : this.newsList.slice(0, 3);
+        }
+    },
+    methods: {
+        goToNewsPage(newsId) {
+            // В реальном приложении здесь будет переход на страницу новости
+            // Например: this.$router.push(`/news/${newsId}`)
+            // Для примера просто покажем alert
+            const news = this.newsList.find(item => item.id === newsId);
+            alert(`Переход на страницу новости: ${news.title}\n\n${news.fullText}`);
+        }
+    }
+}
+</script>
 
 <style lang="css" scoped>
 .main__white{
@@ -68,10 +137,14 @@
     width: 100%;
     max-width: 350px;
     transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .news_card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .news_img{
@@ -86,6 +159,7 @@
     margin: 15px 0 10px;
     color: #333;
     line-height: 1.4;
+    padding: 0 15px;
 }
 
 .news_p{
@@ -93,6 +167,7 @@
     color: #666;
     line-height: 1.5;
     margin-bottom: 15px;
+    padding: 0 15px 15px;
 }
 
 .bottom{
@@ -112,6 +187,8 @@
     font-size: 1.1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .bottom-a:hover {

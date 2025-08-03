@@ -3,7 +3,8 @@ const formData = reactive({
   name: '',
   email: '',
   phone: '',
-  text: ''
+  text: '',
+  consent: false
 });
 
 const isLoading = ref(false);
@@ -28,6 +29,11 @@ const validateForm = () => {
     return false;
   }
   
+  if (!formData.consent) {
+    errorMessage.value = 'Необходимо дать согласие на обработку персональных данных';
+    return false;
+  }
+  
   errorMessage.value = '';
   return true;
 };
@@ -43,6 +49,7 @@ const submitForm = async () => {
     form.append('email', formData.email);
     form.append('phone', formData.phone);
     form.append('text', formData.text);
+    form.append('consent', formData.consent);
     
     const response = await $fetch('http://81.19.136.16/api/create', {
       method: 'POST',
@@ -55,6 +62,7 @@ const submitForm = async () => {
     formData.email = '';
     formData.phone = '';
     formData.text = '';
+    formData.consent = false;
   } catch (error) {
     console.error('Ошибка при отправке:', error);
     errorMessage.value = 'Произошла ошибка при отправке. Пожалуйста, попробуйте позже.';
@@ -81,6 +89,19 @@ const submitForm = async () => {
               <input v-model="formData.email" class="input" type="email" placeholder="Email" required>
               <input v-model="formData.phone" class="input" type="tel" placeholder="Телефон">
               <textarea v-model="formData.text" class="input textarea" placeholder="Ваше сообщение" required></textarea>
+              
+              <div class="consent-checkbox">
+                <input 
+                  type="checkbox" 
+                  id="consent" 
+                  v-model="formData.consent"
+                  class="checkbox-input"
+                >
+                <label for="consent" class="consent-label">
+                  Даю согласие на обработку персональных данных в соответствии с 
+                  <NuxtLink to="/politics" class="policy-link">Политикой конфиденциальности</NuxtLink>
+                </label>
+              </div>
               
               <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
               
@@ -222,6 +243,25 @@ const submitForm = async () => {
     transform: none;
 }
 
+.consent-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.consent-label {
+  font-size: 0.9rem;
+  color: #555;
+  cursor: pointer;
+}
+
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
     .contact_h1 {
@@ -271,6 +311,10 @@ const submitForm = async () => {
     .button {
         height: 45px;
         font-size: 0.95rem;
+    }
+    
+    .consent-label {
+      font-size: 0.85rem;
     }
 }
 </style>
