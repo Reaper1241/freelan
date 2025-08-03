@@ -25,8 +25,6 @@
                     {{ showAllNews ? 'Скрыть статьи' : 'Читать все статьи' }}
                 </a>
             </div>
-
-            <!-- Модальное окно для новости -->
             <div class="news-modal" v-if="selectedNews" @click.self="closeNewsModal">
                 <div class="news-modal__content">
                     <button class="news-modal__close" @click="closeNewsModal">×</button>
@@ -408,7 +406,6 @@ export default {
     font-style: italic;
 }
 
-/* Медиа-запросы для адаптивности */
 @media (max-width: 1024px) {
     .contact_h1 {
         font-size: 2.2rem;
