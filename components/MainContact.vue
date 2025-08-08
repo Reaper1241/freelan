@@ -51,7 +51,7 @@ const submitForm = async () => {
     form.append('text', formData.text);
     form.append('consent', formData.consent);
     
-    const response = await $fetch('http://81.19.136.16/api/create', {
+    const response = await $fetch('http://81.19.136.16:8080/create', {
       method: 'POST',
       body: form
     });
