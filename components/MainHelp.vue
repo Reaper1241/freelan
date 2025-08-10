@@ -29,8 +29,9 @@
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__purple{
-    background: rgb(75, 0, 75);
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -88,7 +89,7 @@
     font-size: 20px;
     text-align: left;
     font-weight: 400;
-    font-family: 'Georgia';
+    font-family: 'Playfair Display', serif;
     line-height: 48px;
     font-style: italic;
 }
@@ -99,11 +100,11 @@
     justify-content: center;
     align-items: center;
     margin: 100px auto;
-    border: 1px solid rgb(74, 0, 104);
+    border: 1px solid #8b7b4e;
     padding: 10px 20px;
     width: 290px;
     border-radius: 8px;
-    background: rgb(74, 0, 104);
+    background: #8b7b4e;
     transition: transform 0.3s ease;
 }
 

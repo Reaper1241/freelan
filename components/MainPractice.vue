@@ -83,8 +83,9 @@
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__white{
-    background: white;
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -119,11 +120,11 @@
 
 .upper-p{
     font-size: 30px;
-    color: rgb(70, 70, 70);
+    color: white;
     line-height: 1.35;
     margin-bottom: 20px;
     text-align: justify;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
 
@@ -143,13 +144,13 @@
 }
 
 .affairs-p{
-    color: rgb(70, 70, 70);
+    color: white;
     font-size: 18px;
     line-height: 1.5;
     text-align: justify;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
-    color: #000000;
+    color: white;
 }
 
 .approach{
@@ -160,10 +161,10 @@
 }
 
 .approach-p{
-    color: rgb(70, 70, 70);
+    color: white;
     font-size: 18px;
     line-height: 1.5;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
 
@@ -175,10 +176,10 @@
 }
 
 .not_work-p{
-    color: rgb(70, 70, 70);
+    color: white;
     font-size: 18px;
     line-height: 1.5;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
 
@@ -190,10 +191,10 @@
 }
 
 .myself-p{
-    color: rgb(70, 70, 70);
+    color: white;
     font-size: 18px;
     line-height: 1.5;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
 

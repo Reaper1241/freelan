@@ -9,7 +9,7 @@
                 </ul>
             </div>    
             <div class="right__block">
-                <a class="footer__consult">Бесплатная консультация</a>
+                <a class="footer__consult">Консультация</a>
                 <NuxtLink to="#contacts" class="footer__button">Записаться</NuxtLink>
             </div>
         </div>    
@@ -17,6 +17,7 @@
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .footer {
     width: 100%;
     min-height: 200px;
@@ -64,7 +65,7 @@
 }
 
 .footer__link:hover {
-    color: rgb(112, 112, 255);
+    color: white;
 }
 
 .right__block {
@@ -83,27 +84,27 @@
 }
 
 .footer__consult:hover {
-    color: rgb(112, 112, 255);
+    color: white;
 }
 
 .footer__button {
     padding: 10px 40px;
     border-radius: 6px;
-    border: 2px solid rgb(41, 41, 255);
+    border: 2px solid #574d31;
     color: rgb(255, 255, 255);
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
-    background: rgb(41, 41, 255);
+    background: #574d31;
     white-space: nowrap;
 }
 
 .footer__button:hover {
     transform: scale(1.05);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: rgb(41, 41, 255);
+    background-color: #574d31;
 }
 
 /* Адаптивность */

@@ -10,6 +10,95 @@ const formData = reactive({
 const isLoading = ref(false);
 const errorMessage = ref('');
 
+// Функция для форматирования телефона
+const formatPhone = (phone) => {
+  // Удаляем все нецифровые символы
+  let cleaned = phone.replace(/\D/g, '');
+  
+  // Если номер начинается с 7 или 8, заменяем на +7
+  if (cleaned.startsWith('7') || cleaned.startsWith('8')) {
+    cleaned = '7' + cleaned.substring(1);
+  } else if (!cleaned.startsWith('7') && cleaned.length > 0) {
+    cleaned = '7' + cleaned;
+  }
+  
+  // Ограничиваем длину номера (11 цифр с учетом +7)
+  cleaned = cleaned.substring(0, 11);
+  
+  // Форматируем номер
+  let formatted = '';
+  if (cleaned.length > 0) {
+    formatted = '+' + cleaned.substring(0, 1);
+    if (cleaned.length > 1) {
+      formatted += ' (' + cleaned.substring(1, 4);
+    }
+    if (cleaned.length > 4) {
+      formatted += ') ' + cleaned.substring(4, 7);
+    }
+    if (cleaned.length > 7) {
+      formatted += ' ' + cleaned.substring(7, 9);
+    }
+    if (cleaned.length > 9) {
+      formatted += ' ' + cleaned.substring(9, 11);
+    }
+  }
+  
+  return formatted;
+};
+
+// Обработчик ввода телефона
+const handlePhoneInput = (e) => {
+  const input = e.target;
+  const position = input.selectionStart;
+  const oldValue = input.value;
+  const oldLength = oldValue.length;
+  
+  // Получаем введенный символ
+  const key = e.data || '';
+  
+  // Форматируем номер
+  input.value = formatPhone(input.value);
+  
+  // Корректируем позицию курсора
+  let newPosition = position;
+  
+  // Если добавляем символ
+  if (key && /\d/.test(key)) {
+    // Определяем позицию курсора после форматирования
+    if (position <= 4) newPosition = 4;
+    else if (position <= 8) newPosition = 8;
+    else if (position <= 11) newPosition = 11;
+    else if (position <= 14) newPosition = 14;
+    else newPosition = input.value.length;
+    
+    // Если вводим в конец, просто ставим курсор в конец
+    if (position >= oldLength) {
+      newPosition = input.value.length;
+    }
+  }
+  // Если удаляем символ
+  else if (position < oldValue.length) {
+    // При удалении символа оставляем курсор на том же месте
+    newPosition = position;
+  }
+  
+  // Устанавливаем новую позицию курсора
+  input.selectionStart = newPosition;
+  input.selectionEnd = newPosition;
+  
+  formData.phone = input.value;
+};
+
+// Обработчик вставки (чтобы предотвратить вставку некорректных данных)
+const handlePhonePaste = (e) => {
+  e.preventDefault();
+  const pastedData = e.clipboardData.getData('text/plain');
+  const cleaned = pastedData.replace(/\D/g, '');
+  let formatted = formatPhone(cleaned);
+  document.execCommand('insertText', false, formatted);
+};
+
+// Остальной код остается без изменений...
 const validateForm = () => {
   if (!formData.name.trim()) {
     errorMessage.value = 'Пожалуйста, введите ваше имя';
@@ -47,7 +136,8 @@ const submitForm = async () => {
     const form = new FormData();
     form.append('name', formData.name);
     form.append('email', formData.email);
-    form.append('phone', formData.phone);
+    // Отправляем телефон без форматирования (только цифры)
+    form.append('phone', formData.phone.replace(/\D/g, ''));
     form.append('text', formData.text);
     form.append('consent', formData.consent);
     
@@ -87,7 +177,14 @@ const submitForm = async () => {
             <form class="form" @submit.prevent="submitForm">
               <input v-model="formData.name" class="input" type="text" placeholder="Имя" required>
               <input v-model="formData.email" class="input" type="email" placeholder="Email" required>
-              <input v-model="formData.phone" class="input" type="tel" placeholder="Телефон">
+              <input 
+                v-model="formData.phone" 
+                class="input" 
+                type="tel" 
+                placeholder="+7 (___) ___ __ __"
+                @input="handlePhoneInput"
+                @paste="handlePhonePaste"
+              >
               <textarea v-model="formData.text" class="input textarea" placeholder="Ваше сообщение" required></textarea>
               
               <div class="consent-checkbox">
@@ -118,7 +215,7 @@ const submitForm = async () => {
 
 <style lang="css" scoped>
 .main__white {
-    background: white;
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -141,7 +238,7 @@ const submitForm = async () => {
 }
 
 .contact_h1 {
-    color: black;
+    color: white;
     font-size: 2.5rem;
     text-align: center;
     margin: 60px 0 40px;
@@ -175,12 +272,12 @@ const submitForm = async () => {
 .phone, .email {
     font-size: 1.3rem;
     margin-bottom: 15px;
-    color: #333;
+    color: white;
 }
 
 .address {
     font-size: 1rem;
-    color: #666;
+    color: white;
     line-height: 1.5;
 }
 
@@ -196,7 +293,7 @@ const submitForm = async () => {
 }
 
 .input:focus {
-    border-color: #4567ff;
+    border-color: #8b7b4e;
     outline: none;
 }
 
@@ -208,7 +305,7 @@ const submitForm = async () => {
 }
 
 .input::placeholder {
-    color: #999;
+    color: #8b7b4e;
     font-size: 0.95rem;
 }
 
@@ -216,7 +313,7 @@ const submitForm = async () => {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: rgb(69, 69, 255);
+    background-color: #8b7b4e;
     color: white;
     height: 50px;
     align-items: center;
@@ -231,7 +328,7 @@ const submitForm = async () => {
   gap: 10px;
 }
 .button:hover {
-    background-color: rgb(50, 50, 220);
+    background-color: #796a44;
     transform: translateY(-2px);
 }
     .input{
@@ -258,7 +355,7 @@ const submitForm = async () => {
 
 .consent-label {
   font-size: 0.9rem;
-  color: #555;
+  color: white;
   cursor: pointer;
 }
 

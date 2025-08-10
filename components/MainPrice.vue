@@ -61,8 +61,9 @@
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__white{
-    background: rgb(228, 228, 228);
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -82,7 +83,7 @@
     font-size: 2rem;
     text-align: center;
     margin: 40px 0 30px;
-    color: #333;
+    color: white;
 }
 
 .upper{
@@ -94,7 +95,7 @@
     font-size: 1.4rem;
     text-align: center;
     line-height: 1.4;
-    color: #222;
+    color: white;
     margin-bottom: 15px;
     font-weight: 500;
 }
@@ -102,9 +103,9 @@
 .upper-p-little{
     font-size: 0.9rem;
     text-align: center;
-    color: #666;
+    color: white;
     line-height: 1.5;
-    font-family: 'TildaSans', Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 300;
     font-style: italic;
 }
@@ -131,14 +132,14 @@
     width: 70%;
     font-size: 1rem;
     line-height: 1.4;
-    color: #333;
+    color: white;
     margin-right: 20px;
 }
 
 .price{
     font-weight: 700;
     font-size: 1.1rem;
-    color: #333;
+    color: white;
     white-space: nowrap;
 }
 

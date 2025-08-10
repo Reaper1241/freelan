@@ -15,8 +15,9 @@
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__white{
-    background: rgb(231, 231, 231);
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -32,7 +33,7 @@
 }
 
 .contact_h1{
-    color: black;
+    color: white;
     font-size: 2.5rem;    
     text-align: center;
     margin: 60px 0 40px;
@@ -51,7 +52,7 @@
     font-size: 1.4rem;
     text-align: center;
     line-height: 1.6;
-    color: #333;
+    color: white;
     margin-bottom: 40px;
 }
 

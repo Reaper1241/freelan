@@ -132,8 +132,9 @@ export default {
 </template>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__white {
-    background: rgb(236, 236, 236);
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -167,7 +168,7 @@ export default {
 
 .upper-p {
     font-size: 1.1rem;
-    color: rgb(70, 70, 70);
+    color: white;
     margin-bottom: 20px;
     line-height: 1.6;
     text-align: justify;
@@ -194,6 +195,7 @@ export default {
     margin-bottom: 15px;
     line-height: 1.5;
     text-align: left;
+    color: white;
     padding: 0 10px;
 }
 
@@ -202,6 +204,7 @@ export default {
     margin: 30px 0;
     line-height: 1.5;
     text-align: center;
+    color: white;
 }
 
 .bottom__photos {

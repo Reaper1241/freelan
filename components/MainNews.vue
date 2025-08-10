@@ -231,8 +231,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main__white{
-    background: rgb(255, 255, 255);
+    background: #293834;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -249,7 +250,7 @@ export default {
 }
 
 .contact_h1{
-    color: black;
+    color: white;
     font-size: 2.5rem;
     text-align: center;
     margin: 80px 0 60px;
@@ -291,14 +292,14 @@ export default {
 .news_h2{
     font-size: 1.4rem;
     margin: 15px 0 10px;
-    color: #333;
+    color: white;
     line-height: 1.4;
     padding: 0 15px;
 }
 
 .news_p{
     font-size: 1rem;
-    color: #666;
+    color: white;
     line-height: 1.5;
     margin-bottom: 15px;
     padding: 0 15px 15px;
@@ -313,7 +314,7 @@ export default {
 .bottom-a{
     padding: 18px 36px;
     width: auto;
-    background: black;
+    background: #8b7b4e;
     color: white;
     display: inline-flex;
     justify-content: center;
@@ -326,7 +327,7 @@ export default {
 }
 
 .bottom-a:hover {
-    background: #333;
+    background: #6d603d;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -366,12 +367,12 @@ export default {
     background: none;
     border: none;
     cursor: pointer;
-    color: #666;
+    color: white;
     padding: 5px;
 }
 
 .news-modal__close:hover {
-    color: #000;
+    color: white;
 }
 
 .news-modal__image {
@@ -385,13 +386,13 @@ export default {
 .news-modal__title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: white;
 }
 
 .news-modal__text {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #444;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -401,7 +402,7 @@ export default {
 
 .news-modal__date {
     font-size: 0.9rem;
-    color: #666;
+    color: white;
     font-style: italic;
 }
 

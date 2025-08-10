@@ -14,7 +14,7 @@
         </ul>
       </div>    
       <div class="right__block">
-        <a class="left__link">Бесплатная консультация</a>
+        <a class="left__link">Консультация</a>
         <NuxtLink to="#contacts" class="header__button">Записаться</NuxtLink>
       </div>
     </header>
@@ -37,12 +37,13 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 .main-header{
   display: flex;
   width: 100%;
   align-items: center;
   height: 80px;
-  background-color: white;
+  background-color: #8b7b4e;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
@@ -77,7 +78,7 @@ export default {
 }
 
 .nav-link {
-  color: black !important;
+  color: white !important;
   text-decoration: none !important;
 }
 
@@ -87,7 +88,7 @@ export default {
 
 .header__link {
   text-decoration: none !important;
-  color: inherit;
+  color: white;
   font-size: 16px;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -95,7 +96,7 @@ export default {
 }
 
 .header__link:hover {
-  color: rgb(41, 41, 255);
+  color: #574d31;
 }
 
 .right__block {
@@ -105,7 +106,7 @@ export default {
 }
 
 .left__link {
-  color: #333;
+  color: white;
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
@@ -114,8 +115,8 @@ export default {
 .header__button {
   padding: 10px 40px;
   border-radius: 6px;
-  border: 2px solid rgb(41, 41, 255);
-  color: rgb(41, 41, 255);
+  border: 2px solid #574d31;
+  color: white;
   font-size: 16px;
   text-decoration: none;
   cursor: pointer;
@@ -129,7 +130,7 @@ export default {
 .header__button:hover {
   transform: scale(1.05);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
-  background-color: rgb(41, 41, 255);
+  background-color: #574d31;
   color: white;
 }
 
@@ -147,7 +148,7 @@ export default {
 .burger-line {
   width: 100%;
   height: 3px;
-  background-color: #000;
+  background-color: white;
   transition: all 0.3s ease;
 }
 
