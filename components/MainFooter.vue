@@ -7,10 +7,14 @@
                     <NuxtLink to="#price_id" class="nav-link"><li class="footer__link">Цены</li></NuxtLink>
                     <NuxtLink to="#about" class="nav-link"><li class="footer__link">Обо мне</li></NuxtLink>
                 </ul>
+                
             </div>    
             <div class="right__block">
+                
                 <a class="footer__consult">Консультация</a>
-                <NuxtLink to="#contacts" class="footer__button">Записаться</NuxtLink>
+                <a href="https://wa.me/79165375413"><img src="/public/icons8-whatsapp-48.png" width="28" alt=""></a>
+              <a href="https://t.me/marsyme"><img src="/public/icons8-телеграм-48.png" width="24" alt=""></a>
+                <NuxtLink to="#contacts" class="footer__button">Записаться на консультацию</NuxtLink>
             </div>
         </div>    
     </footer>
@@ -21,7 +25,7 @@
 .footer {
     width: 100%;
     min-height: 200px;
-    background: rgb(46, 46, 46);
+    background: #202b28;
     padding: 20px 0;
 }
 
@@ -57,7 +61,7 @@
 
 .footer__link {
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
     transition: color 0.2s ease;
     cursor: pointer;
@@ -78,7 +82,7 @@
 .footer__consult {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -92,12 +96,12 @@
     border-radius: 6px;
     border: 2px solid #574d31;
     color: rgb(255, 255, 255);
-    font-size: 16px;
+    font-size: 20px;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
-    background: #574d31;
+    background: #8b7b4e;
     white-space: nowrap;
 }
 

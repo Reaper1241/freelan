@@ -17,18 +17,46 @@
                 </p>
                 <p class="main_p">
                     Юрист по военному праву Мария Семенова
-                    Москва, +456 344 267 15 24
-                    antonovoleg@service.com
+                    Москва, +7 (916)-537-54-13
+                    simoxa96@gmail.com
                 </p>
-            </div>    
+            </div> 
         </div>
+        
     </main>
+    <div class="main2">
+        <NuxtLink to="#contacts" class="header__button"><div class="help__button">
+            <a class="button" href="/">Записаться на консультацию</a>
+        </div></NuxtLink>   
+    </div>
 </template>
 
 <style lang="css" scoped>
+.main2{
+    width: 100%;
+    padding: 10px 0;
+    background: #293834;
+}
 /* Подключаем шрифт Playfair Display */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
-
+.help__button{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    border: 1px solid #8b7b4e;
+    padding: 10px 20px;
+    width: 290px;
+    border-radius: 8px;
+    background: #8b7b4e;
+    transition: transform 0.3s ease;
+}
+.button{
+    color: white;
+    /* text-decoration: none; */
+    font-size: 20px;
+}
 .main{
     display: flex;
     box-sizing: border-box;
@@ -41,7 +69,7 @@
 }
 
 .main__img{
-    width: 550px;
+    width: 580px;
     height: auto;
     object-fit: cover;
 }
@@ -70,7 +98,7 @@
     color: white;
     font-family: 'Playfair Display', serif;
     font-size: 20px;
-    line-height: 1.45;
+    line-height: 30px;
     margin: 0 0 20px 0;
 }
 

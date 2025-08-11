@@ -8,14 +8,15 @@
           <div class="burger-line"></div>
         </div>
         <ul class="header__links" :class="{ 'active': isMenuOpen }">
-          <NuxtLink to="#help" class="nav-link"><li class="header__link">Услуги</li></NuxtLink>
-          <NuxtLink to="#price_id" class="nav-link"><li class="header__link">Цены</li></NuxtLink>
-          <NuxtLink to="#about" class="nav-link"><li class="header__link">Обо мне</li></NuxtLink>
+          <li class="header__link" @click="goToSection('help')">Услуги</li>
+          <li class="header__link" @click="goToSection('price_id')">Цены</li>
+          <li class="header__link" @click="goToSection('about')">Обо мне</li>
+          <li class="header__link" @click="goToSection('practice')">Практика</li>
         </ul>
       </div>    
       <div class="right__block">
         <a class="left__link">Консультация</a>
-        <NuxtLink to="#contacts" class="header__button">Записаться</NuxtLink>
+        <button class="header__button" @click="goToSection('contacts')">Записаться на консультацию</button>
       </div>
     </header>
   </div>  
@@ -31,10 +32,22 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    goToSection(id) {
+      if (this.$route.path !== "/") {
+        // Переходим на главную с передачей якоря
+        this.$router.push({ path: "/", hash: `#${id}` });
+      } else {
+        // Если уже на главной — просто скроллим
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+      this.isMenuOpen = false;
     }
   }
 }
 </script>
+
 
 <style lang="css" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
@@ -43,7 +56,7 @@ export default {
   width: 100%;
   align-items: center;
   height: 80px;
-  background-color: #8b7b4e;
+  background-color: #293834;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
@@ -89,14 +102,14 @@ export default {
 .header__link {
   text-decoration: none !important;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   transition: color 0.2s ease;
   cursor: pointer;
 }
 
 .header__link:hover {
-  color: #574d31;
+  color: white;
 }
 
 .right__block {
@@ -108,7 +121,7 @@ export default {
 .left__link {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -116,15 +129,15 @@ export default {
   padding: 10px 40px;
   border-radius: 6px;
   border: 2px solid #574d31;
+  background-color: #8b7b4e;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
   transform: scale(1);
   box-shadow: none;
   font-weight: 500;
-  background: transparent;
 }
 
 .header__button:hover {
@@ -163,7 +176,7 @@ export default {
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: #293834;
     flex-direction: column;
     align-items: center;
     gap: 0;

@@ -1,5 +1,5 @@
 <template>
-    <main class="main__white">
+    <main id="practice" class="main__white">
         <div class="container">
             <h1 class="contact_h1"> 
                 Практика
@@ -59,7 +59,7 @@
                 </div>
                 <div class="myself">
                     <h2 class="h2">
-                        Как я могу помочь:
+                        По Вашему запросу я:
                     </h2>
                     <p class="myself-p"> 
                         Объясню, как не допустить ошибок с самого начала, проконсультирую на предмет возможных рисков;
@@ -77,6 +77,9 @@
                         Участвую как представитель в гражданском и административном судопроизводстве.
                     </p>
                 </div>
+                <NuxtLink to="#contacts" class="header__button"><div class="help__button">
+                    <a class="button" href="/">Записаться на консультацию</a>
+                </div></NuxtLink>
             </div>
         </div>
     </main>
@@ -90,7 +93,24 @@
     padding: 20px;
     box-sizing: border-box;
 }
-
+.help__button{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    border: 1px solid #8b7b4e;
+    padding: 10px 20px;
+    width: 290px;
+    border-radius: 8px;
+    background: #8b7b4e;
+    transition: transform 0.3s ease;
+}
+.button{
+    color: white;
+    /* text-decoration: none; */
+    font-size: 20px;
+}
 .container{
     display: flex;
     margin: 0 auto;
@@ -119,13 +139,14 @@
 }
 
 .upper-p{
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    line-height: 1.35;
+    line-height: 30px;
     margin-bottom: 20px;
     text-align: justify;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
+    margin-top: 30px;
 }
 
 .h2{
@@ -140,13 +161,16 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    background: #8b7b4e;
     margin-bottom: 40px;
+    padding: 15px;
+    border-radius: 15px;
 }
 
 .affairs-p{
     color: white;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height: 30px;
     text-align: justify;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
@@ -162,8 +186,8 @@
 
 .approach-p{
     color: white;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height:30px;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
@@ -177,8 +201,8 @@
 
 .not_work-p{
     color: white;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height: 30px;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
@@ -192,8 +216,8 @@
 
 .myself-p{
     color: white;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height:30px;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
@@ -206,7 +230,7 @@
     }
     
     .upper-p {
-        font-size: 18px;
+        font-size: 20px;
     }
     
     .h2 {

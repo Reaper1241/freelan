@@ -55,6 +55,9 @@
                         </p>
                     </div>
                 </div>
+                <NuxtLink to="#contacts" class="header__button"><div class="help__button">
+                    <a class="button" href="/">Записаться на консультацию</a>
+                </div></NuxtLink>
             </div>
         </main>
     </section>
@@ -68,7 +71,24 @@
     padding: 20px;
     box-sizing: border-box;
 }
-
+.help__button{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    border: 1px solid #8b7b4e;
+    padding: 10px 20px;
+    width: 290px;
+    border-radius: 8px;
+    background: #8b7b4e;
+    transition: transform 0.3s ease;
+}
+.button{
+    color: white;
+    /* text-decoration: none; */
+    font-size: 20px;
+}
 .container{
     display: flex;
     max-width: 1000px;
@@ -92,19 +112,19 @@
 }
 
 .upper-p-big{
-    font-size: 1.4rem;
+    font-size: 20px;
     text-align: center;
-    line-height: 1.4;
+    line-height: 30px;
     color: white;
     margin-bottom: 15px;
     font-weight: 500;
 }
 
 .upper-p-little{
-    font-size: 0.9rem;
+    font-size: 20px;
     text-align: center;
     color: white;
-    line-height: 1.5;
+    line-height: 30px;
     font-family: 'Playfair Display', serif;
     font-weight: 300;
     font-style: italic;
@@ -112,6 +132,9 @@
 
 .card-block{
     display: flex;
+    background: #8b7b4e;
+    padding: 15px 15px 15px 15px;
+    border-radius: 15px;
     flex-direction: column;
     width: 100%;
     max-width: 800px;
@@ -131,7 +154,7 @@
 .title{
     width: 70%;
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 30px;
     color: white;
     margin-right: 20px;
 }
@@ -165,7 +188,7 @@
         /* align-items: flex-start; */
         border: none;
         padding: 10px 10px;
-        background: #e0e0e0;
+        /* background: #e0e0e0; */
         align-items: center;
         justify-content: space-between;
         border-radius: 8px;

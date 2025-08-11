@@ -4,7 +4,8 @@ const formData = reactive({
   email: '',
   phone: '',
   text: '',
-  consent: false
+  consent: false,
+  consentPrice: false // Новая галочка согласия с ценой
 });
 
 const isLoading = ref(false);
@@ -89,7 +90,7 @@ const handlePhoneInput = (e) => {
   formData.phone = input.value;
 };
 
-// Обработчик вставки (чтобы предотвратить вставку некорректных данных)
+// Обработчик вставки
 const handlePhonePaste = (e) => {
   e.preventDefault();
   const pastedData = e.clipboardData.getData('text/plain');
@@ -98,7 +99,7 @@ const handlePhonePaste = (e) => {
   document.execCommand('insertText', false, formatted);
 };
 
-// Остальной код остается без изменений...
+// Валидация формы
 const validateForm = () => {
   if (!formData.name.trim()) {
     errorMessage.value = 'Пожалуйста, введите ваше имя';
@@ -123,6 +124,11 @@ const validateForm = () => {
     return false;
   }
   
+  if (!formData.consentPrice) {
+    errorMessage.value = 'Необходимо согласиться со стоимостью консультации';
+    return false;
+  }
+  
   errorMessage.value = '';
   return true;
 };
@@ -136,10 +142,10 @@ const submitForm = async () => {
     const form = new FormData();
     form.append('name', formData.name);
     form.append('email', formData.email);
-    // Отправляем телефон без форматирования (только цифры)
     form.append('phone', formData.phone.replace(/\D/g, ''));
     form.append('text', formData.text);
     form.append('consent', formData.consent);
+    form.append('consentPrice', formData.consentPrice);
     
     const response = await $fetch('http://81.19.136.16:8080/create', {
       method: 'POST',
@@ -153,6 +159,7 @@ const submitForm = async () => {
     formData.phone = '';
     formData.text = '';
     formData.consent = false;
+    formData.consentPrice = false;
   } catch (error) {
     console.error('Ошибка при отправке:', error);
     errorMessage.value = 'Произошла ошибка при отправке. Пожалуйста, попробуйте позже.';
@@ -169,11 +176,16 @@ const submitForm = async () => {
         <h1 class="contact_h1">Контакты</h1>
         <div class="main_block">
           <div class="left">
-            <h2 class="phone">+456 344 267 15 24</h2>
-            <h2 class="email">antonovoleg@service.com</h2>
-            <p class="address">Москва, регистрационный номер 0/123/45</p>
+            <h2 class="phone">+7 (916)-537-54-13</h2>
+            <h2 class="email">simoxa96@gmail.com</h2>
+            <div class="adress-div">
+              <p class="address">Москва</p>
+              <a href="https://wa.me/79165375413"><img src="/public/icons8-whatsapp-48.png" width="28" alt=""></a>
+              <a href="https://t.me/marsyme"><img src="/public/icons8-телеграм-48.png" width="24" alt=""></a>
+            </div>
           </div>
           <div class="right">
+            <h2>Запись на консультацию</h2>
             <form class="form" @submit.prevent="submitForm">
               <input v-model="formData.name" class="input" type="text" placeholder="Имя" required>
               <input v-model="formData.email" class="input" type="email" placeholder="Email" required>
@@ -200,6 +212,18 @@ const submitForm = async () => {
                 </label>
               </div>
               
+              <div class="consent-checkbox">
+                <input 
+                  type="checkbox" 
+                  id="consentPrice" 
+                  v-model="formData.consentPrice"
+                  class="checkbox-input"
+                >
+                <label for="consentPrice" class="consent-label">
+                  Я согласен со стоимостью консультации
+                </label>
+              </div>
+              
               <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
               
               <button type="submit" class="button" :disabled="isLoading">
@@ -220,7 +244,11 @@ const submitForm = async () => {
     padding: 20px;
     box-sizing: border-box;
 }
-
+.adress-div{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .error-message {
   color: #ff3333;
   margin: 10px 0;
@@ -276,9 +304,9 @@ const submitForm = async () => {
 }
 
 .address {
-    font-size: 1rem;
+    font-size: 20px;
     color: white;
-    line-height: 1.5;
+    line-height: 30px;
 }
 
 .input {
@@ -347,8 +375,8 @@ const submitForm = async () => {
 }
 
 .checkbox-input {
-  width: 18px;
-  height: 18px;
+  width: 13px;
+  height: 13px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -357,6 +385,15 @@ const submitForm = async () => {
   font-size: 0.9rem;
   color: white;
   cursor: pointer;
+}
+
+.policy-link {
+  color: #8b7b4e;
+  text-decoration: none;
+}
+
+.policy-link:hover {
+  text-decoration: underline;
 }
 
 /* Медиа-запросы для адаптивности */

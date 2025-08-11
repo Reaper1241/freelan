@@ -37,7 +37,7 @@
     font-size: 2.5rem;    
     text-align: center;
     margin: 60px 0 40px;
-    line-height: 1.3;
+    line-height: 30px;
 }
 
 .middle_block{
@@ -50,8 +50,8 @@
 
 .middle-p{
     font-size: 1.4rem;
-    text-align: center;
-    line-height: 1.6;
+    text-align: left;
+    line-height: 30px;
     color: white;
     margin-bottom: 40px;
 }
@@ -130,7 +130,7 @@
     .middle-p {
         font-size: 1rem;
         text-align: left;
-        line-height: 1.5;
+        line-height: 30px;
     }
     
     .bottom-a {

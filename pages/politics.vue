@@ -22,7 +22,7 @@ import MainFooter from '@/components/MainFooter.vue'
         Семенова Мария Александровна, ИНН 771545473900
       </p>
       <p>
-        +79165375413, e-mail: simoxa96@gmail.com
+        +7 (916)-537-54-13, e-mail: simoxa96@gmail.com
       </p>
       <h3>
         Пользователь
@@ -130,7 +130,7 @@ import MainFooter from '@/components/MainFooter.vue'
 
 .politics p {
   margin-bottom: 15px;
-  line-height: 1.5;
+  line-height: 30px;
   font-size: 1rem;
 }
 

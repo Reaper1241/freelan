@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <NuxtLink to="#contacts" class="header__button"><div class="help__button">
-                    <a class="button" href="/">Записаться</a>
+                    <a class="button" href="/">Записаться на консультацию</a>
                 </div></NuxtLink>
             </div>
         </main>
@@ -54,7 +54,7 @@
 
 .help_h1{
     color: white;
-    font-size: 50px;    
+    font-size: 32px;    
     display: flex;
     justify-content: center;
     margin-top: 100px;
@@ -79,8 +79,12 @@
     max-width: 700px;
     flex-direction: column;
     margin: 0 auto;
+    margin-top: 15px;
     gap: 20px;
     padding: 0;
+    background: #8b7b4e;
+    padding: 15px;
+    border-radius: 15px;
     list-style-position: inside;
 }
 
@@ -90,7 +94,7 @@
     text-align: left;
     font-weight: 400;
     font-family: 'Playfair Display', serif;
-    line-height: 48px;
+    line-height: 30px;
     font-style: italic;
 }
 
@@ -115,7 +119,7 @@
 .button{
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     white-space: nowrap;
 }
 
@@ -131,7 +135,7 @@
     }
     
     .li {
-        font-size: 18px;
+        font-size: 20px;
         line-height: 28px;
     }
     
