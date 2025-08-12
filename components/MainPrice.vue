@@ -89,6 +89,10 @@
     /* text-decoration: none; */
     font-size: 20px;
 }
+.help__button:hover {
+    transform: scale(1.05);
+}
+
 .container{
     display: flex;
     max-width: 1000px;
@@ -133,7 +137,7 @@
 .card-block{
     display: flex;
     background: #8b7b4e;
-    padding: 15px 15px 15px 15px;
+    padding: 0px 25px 15px 25px;
     border-radius: 15px;
     flex-direction: column;
     width: 100%;
@@ -183,6 +187,16 @@
     .card-block{
         gap: 10px;
     }
+    .card-block{
+        display: flex;
+        background: #8b7b4e;
+        padding: 15px 15px 15px 15px;
+        border-radius: 15px;
+        flex-direction: column;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 50px;
+    }
     .card {
         /* flex-direction: column; */
         /* align-items: flex-start; */
@@ -196,7 +210,12 @@
         /* flex-direction: row; */
         
     }
-    
+    .button{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        white-space: nowrap;
+    }
     .title {
         width: 100%;
         margin-bottom: 10px;

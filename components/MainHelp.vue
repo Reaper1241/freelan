@@ -122,6 +122,9 @@
     font-size: 20px;
     white-space: nowrap;
 }
+.help__button:hover {
+    transform: scale(1.05);
+}
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
@@ -148,6 +151,12 @@
         margin: 60px auto;
         width: 250px;
     }
+        .button{
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 480px) {
@@ -155,7 +164,12 @@
         font-size: 28px;
         margin-top: 40px;
     }
-    
+    .button{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        white-space: nowrap;
+    }
     .h2 {
         font-size: 20px;
     }
@@ -175,8 +189,5 @@
         max-width: 250px;
     }
     
-    .button {
-        font-size: 16px;
-    }
 }
 </style>

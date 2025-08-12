@@ -221,6 +221,9 @@
     font-family: 'Playfair Display', serif;
     font-weight: 300;
 }
+.help__button:hover {
+    transform: scale(1.05);
+}
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
@@ -237,7 +240,12 @@
         font-size: 22px;
         margin: 25px 0;
     }
-    
+    .button{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        white-space: nowrap;
+    }
     .affairs-p,
     .approach-p,
     .not_work-p,

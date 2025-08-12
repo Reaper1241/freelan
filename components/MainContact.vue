@@ -1,32 +1,27 @@
 <script setup>
 const formData = reactive({
   name: '',
-  email: '',
   phone: '',
   text: '',
   consent: false,
-  consentPrice: false // Новая галочка согласия с ценой
+  consentPrice: false
 });
 
 const isLoading = ref(false);
 const errorMessage = ref('');
 
-// Функция для форматирования телефона
+// Функция форматирования телефона
 const formatPhone = (phone) => {
-  // Удаляем все нецифровые символы
   let cleaned = phone.replace(/\D/g, '');
   
-  // Если номер начинается с 7 или 8, заменяем на +7
   if (cleaned.startsWith('7') || cleaned.startsWith('8')) {
     cleaned = '7' + cleaned.substring(1);
   } else if (!cleaned.startsWith('7') && cleaned.length > 0) {
     cleaned = '7' + cleaned;
   }
   
-  // Ограничиваем длину номера (11 цифр с учетом +7)
   cleaned = cleaned.substring(0, 11);
   
-  // Форматируем номер
   let formatted = '';
   if (cleaned.length > 0) {
     formatted = '+' + cleaned.substring(0, 1);
@@ -54,36 +49,26 @@ const handlePhoneInput = (e) => {
   const oldValue = input.value;
   const oldLength = oldValue.length;
   
-  // Получаем введенный символ
   const key = e.data || '';
   
-  // Форматируем номер
   input.value = formatPhone(input.value);
   
-  // Корректируем позицию курсора
   let newPosition = position;
   
-  // Если добавляем символ
   if (key && /\d/.test(key)) {
-    // Определяем позицию курсора после форматирования
     if (position <= 4) newPosition = 4;
     else if (position <= 8) newPosition = 8;
     else if (position <= 11) newPosition = 11;
     else if (position <= 14) newPosition = 14;
     else newPosition = input.value.length;
     
-    // Если вводим в конец, просто ставим курсор в конец
     if (position >= oldLength) {
       newPosition = input.value.length;
     }
-  }
-  // Если удаляем символ
-  else if (position < oldValue.length) {
-    // При удалении символа оставляем курсор на том же месте
+  } else if (position < oldValue.length) {
     newPosition = position;
   }
   
-  // Устанавливаем новую позицию курсора
   input.selectionStart = newPosition;
   input.selectionEnd = newPosition;
   
@@ -106,11 +91,11 @@ const validateForm = () => {
     return false;
   }
   
-  if (!formData.email.trim()) {
-    errorMessage.value = 'Пожалуйста, введите email';
+  if (!formData.phone.trim()) {
+    errorMessage.value = 'Пожалуйста, введите номер телефона';
     return false;
-  } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-    errorMessage.value = 'Пожалуйста, введите корректный email';
+  } else if (formData.phone.replace(/\D/g, '').length < 11) {
+    errorMessage.value = 'Пожалуйста, введите корректный номер телефона';
     return false;
   }
   
@@ -141,7 +126,6 @@ const submitForm = async () => {
   try {
     const form = new FormData();
     form.append('name', formData.name);
-    form.append('email', formData.email);
     form.append('phone', formData.phone.replace(/\D/g, ''));
     form.append('text', formData.text);
     form.append('consent', formData.consent);
@@ -153,9 +137,8 @@ const submitForm = async () => {
     });
     
     alert('Ваша заявка успешно отправлена! ID: ' + response.id);
-    // Сброс формы
+    
     formData.name = '';
-    formData.email = '';
     formData.phone = '';
     formData.text = '';
     formData.consent = false;
@@ -188,12 +171,12 @@ const submitForm = async () => {
             <h2>Запись на консультацию</h2>
             <form class="form" @submit.prevent="submitForm">
               <input v-model="formData.name" class="input" type="text" placeholder="Имя" required>
-              <input v-model="formData.email" class="input" type="email" placeholder="Email" required>
               <input 
                 v-model="formData.phone" 
                 class="input" 
                 type="tel" 
                 placeholder="+7 (___) ___ __ __"
+                required
                 @input="handlePhoneInput"
                 @paste="handlePhonePaste"
               >
@@ -236,6 +219,7 @@ const submitForm = async () => {
     </main>
   </section>
 </template>
+
 
 <style lang="css" scoped>
 .main__white {
@@ -391,6 +375,9 @@ const submitForm = async () => {
   color: #8b7b4e;
   text-decoration: none;
 }
+.help__button:hover {
+    transform: scale(1.05);
+}
 
 .policy-link:hover {
   text-decoration: underline;
@@ -415,6 +402,12 @@ const submitForm = async () => {
     }
     .form{
       gap: 10px;
+    }
+    .button{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        white-space: nowrap;
     }
     .phone, .email {
         font-size: 1.2rem;

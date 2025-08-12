@@ -57,6 +57,10 @@
     /* text-decoration: none; */
     font-size: 20px;
 }
+.help__button:hover {
+    transform: scale(1.05);
+}
+
 .main{
     display: flex;
     box-sizing: border-box;
@@ -119,7 +123,12 @@
         max-width: 100%;
         height: auto;
     }
-    
+    .button{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        white-space: nowrap;
+    }
     .right__block-main {
         width: 100%;
         max-width: 100%;
