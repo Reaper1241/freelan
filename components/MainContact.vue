@@ -225,7 +225,7 @@ const submitForm = async () => {
 .main__white {
     background: #293834;
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px;
     box-sizing: border-box;
 }
 .adress-div{
@@ -387,7 +387,7 @@ const submitForm = async () => {
 @media (max-width: 768px) {
     .contact_h1 {
         font-size: 2rem;
-        margin: 40px 0 30px;
+        margin: 0px 0 30px;
     }
     
     .main_block {
@@ -417,7 +417,7 @@ const submitForm = async () => {
 @media (max-width: 480px) {
     .contact_h1 {
         font-size: 1.8rem;
-        margin: 30px 0 25px;
+        margin: 0px 0 25px;
     }
     .form{
       gap: 10px;

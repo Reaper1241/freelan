@@ -33,7 +33,7 @@
 .main__purple{
     background: #293834;
     width: 100%;
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
 }
 
@@ -49,7 +49,7 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .help_h1{
@@ -57,7 +57,7 @@
     font-size: 32px;    
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 30px;
     text-align: center;
     padding: 0 20px;
 }
@@ -76,7 +76,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
     flex-direction: column;
     margin: 0 auto;
     margin-top: 15px;
@@ -103,7 +103,7 @@
     height: 40px;
     justify-content: center;
     align-items: center;
-    margin: 100px auto;
+    margin: 30px auto;
     border: 1px solid #8b7b4e;
     padding: 10px 20px;
     width: 290px;
@@ -130,7 +130,7 @@
 @media (max-width: 768px) {
     .help_h1 {
         font-size: 36px;
-        margin-top: 60px;
+        margin-top: 30px;
     }
     
     .h2 {
@@ -188,6 +188,8 @@
         width: 100%;
         max-width: 250px;
     }
-    
+    .main-contact{
+        margin: 0;
+    }
 }
 </style>

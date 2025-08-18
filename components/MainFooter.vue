@@ -3,22 +3,37 @@
         <div class="footer__content">
             <div class="left__block">
                 <ul class="footer__links">
-                    <NuxtLink to="#help" class="nav-link"><li class="footer__link">Услуги</li></NuxtLink>
-                    <NuxtLink to="#price_id" class="nav-link"><li class="footer__link">Цены</li></NuxtLink>
-                    <NuxtLink to="#about" class="nav-link"><li class="footer__link">Обо мне</li></NuxtLink>
+                    <li class="footer__link" @click="goToSection('help')">Услуги</li>
+                    <li class="footer__link" @click="goToSection('price_id')">Цены</li>
+                    <li class="footer__link" @click="goToSection('about')">Обо мне</li>
                 </ul>
-                
             </div>    
             <div class="right__block">
-                
                 <a class="footer__consult">Консультация</a>
-                <a href="https://wa.me/79165375413"><img src="/public/icons8-whatsapp-48.png" width="28" alt=""></a>
-              <a href="https://t.me/marsyme"><img src="/public/icons8-телеграм-48.png" width="24" alt=""></a>
-                <NuxtLink to="#contacts" class="footer__button">Записаться на консультацию</NuxtLink>
+                <a href="https://wa.me/79165375413"><img src="/icons8-whatsapp-48.png" width="28" alt="WhatsApp"></a>
+                <a href="https://t.me/marsyme"><img src="/icons8-телеграм-48.png" width="24" alt="Telegram"></a>
+                <button class="footer__button" @click="goToSection('contacts')">Записаться на консультацию</button>
             </div>
         </div>    
     </footer>
 </template>
+
+<script>
+export default {
+    methods: {
+        goToSection(id) {
+            if (this.$route.path !== "/") {
+                // Переходим на главную с передачей якоря
+                this.$router.push({ path: "/", hash: `#${id}` });
+            } else {
+                // Если уже на главной — просто скроллим
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }
+}
+</script>
 
 <style lang="css" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
@@ -54,11 +69,6 @@
     margin: 0;
 }
 
-.nav-link {
-    color: white !important;
-    text-decoration: none !important;
-}
-
 .footer__link {
     color: white;
     font-size: 20px;
@@ -70,6 +80,7 @@
 
 .footer__link:hover {
     color: white;
+    text-decoration: underline;
 }
 
 .right__block {
@@ -87,10 +98,6 @@
     white-space: nowrap;
 }
 
-.footer__consult:hover {
-    color: white;
-}
-
 .footer__button {
     padding: 10px 40px;
     border-radius: 6px;
@@ -103,6 +110,7 @@
     font-weight: 500;
     background: #8b7b4e;
     white-space: nowrap;
+    border: none;
 }
 
 .footer__button:hover {

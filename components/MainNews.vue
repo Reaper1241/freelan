@@ -85,7 +85,7 @@ export default {
 .main__white{
     background: #293834;
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px;
     box-sizing: border-box;
 }
 
@@ -271,7 +271,7 @@ export default {
     }
 
     .news-modal__content {
-        max-width: 700px;
+        max-width: 1000px;
     }
 }
 
@@ -295,7 +295,7 @@ export default {
     }
     
     .bottom {
-        margin: 50px auto;
+        margin: 20px auto;
     }
 
     .news-modal__content {
@@ -310,7 +310,7 @@ export default {
 @media (max-width: 480px) {
     .contact_h1 {
         font-size: 1.8rem;
-        margin: 40px 0 30px;
+        margin: 0px 0 30px;
     }
     
     .news_block {

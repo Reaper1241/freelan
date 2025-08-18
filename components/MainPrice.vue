@@ -54,6 +54,22 @@
                             15 000 р
                         </p>
                     </div>
+                    <div class="card">
+                        <p class="title">
+                            Консультация специалиста по ВВК
+                        </p>
+                        <p class="price"> 	
+                            по договоренности
+                        </p>
+                    </div>
+                    <div class="card">
+                        <p class="title">
+                            Юридическое сопровождение получения выплат
+                        </p>
+                        <p class="price">
+                            фикс + гонорар успеха
+                        </p>
+                    </div>
                 </div>
                 <NuxtLink to="#contacts" class="header__button"><div class="help__button">
                     <a class="button" href="/">Записаться на консультацию</a>
@@ -68,7 +84,7 @@
 .main__white{
     background: #293834;
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px;
     box-sizing: border-box;
 }
 .help__button{
@@ -106,12 +122,12 @@
 .contact_h1 {
     font-size: 2rem;
     text-align: center;
-    margin: 40px 0 30px;
+    margin: 0px 0 30px;
     color: white;
 }
 
 .upper{
-    max-width: 700px;
+    max-width: 1000px;
     margin-bottom: 40px;
 }
 
@@ -141,7 +157,7 @@
     border-radius: 15px;
     flex-direction: column;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto 50px;
 }
 
