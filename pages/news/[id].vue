@@ -10,6 +10,24 @@
                     {{ paragraph }}
                 </p>
             </div>
+            
+            <!-- Ссылка на следующую статью или на главную -->
+            <div class="next-article-link">
+                <NuxtLink 
+                    v-if="nextArticle" 
+                    :to="'/news/' + nextArticle.id" 
+                    class="next-link"
+                >
+                    Читать следующую статью: {{ nextArticle.title }} →
+                </NuxtLink>
+                <NuxtLink 
+                    v-else 
+                    to="/" 
+                    class="next-link"
+                >
+                    Вернуться на главную →
+                </NuxtLink>
+            </div>
         </div>
     </main>
     <MainFooter/>
@@ -163,12 +181,19 @@ III группа — 4 815,39 руб
                     date: '2025-08-25'
                 }
             ],
-            news: null
+            news: null,
+            nextArticle: null
         }
     },
     mounted() {
         const id = Number(this.$route.params.id);
         this.news = this.newsData.find(n => n.id === id);
+        
+        // Находим следующую статью
+        const currentIndex = this.newsData.findIndex(n => n.id === id);
+        if (currentIndex < this.newsData.length - 1) {
+            this.nextArticle = this.newsData[currentIndex + 1];
+        }
     },
     methods: {
         formatDate(dateString) {
@@ -230,6 +255,19 @@ III группа — 4 815,39 руб
     text-align: left;
 }
 .news-detail__text p {
+    padding: 5px 15px;
+}
+.next-article-link {
+    margin-top: 40px;
     padding: 15px;
+    text-align: right;
+}
+.next-link {
+    color: #8b7b4e;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+.next-link:hover {
+    text-decoration: underline;
 }
 </style>
