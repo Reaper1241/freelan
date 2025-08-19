@@ -106,7 +106,7 @@ export default {
 
         <div class="bottom">
           <p class="bottom-p">
-            Специально для Вас мы отсняли выпуск "топ вопросов военному адвокату", где разбираем самые насущные вопросы, с которыми сталкиваются военнослужащие: https://www.youtube.com/@lifemobilization
+            Специально для Вас мы отсняли выпуск "топ вопросов военному адвокату", где разбираем самые насущные вопросы, с которыми сталкиваются военнослужащие: <a class="link" href="https://www.youtube.com/@lifemobilization">ссылка</a> 
           </p>
         </div>
 
@@ -195,7 +195,9 @@ export default {
   padding: 0 20px;
   color: white;
 }
-
+.link{
+    color: #8b7b4e;;
+}
 .practice__upper {
   max-width: 1000px;
   display: flex;
@@ -240,7 +242,9 @@ export default {
   color: white;
   padding: 0 10px;
 }
-
+.bottom{
+    max-width: 100%;
+}
 .bottom-p {
   font-size: 20px !important;
   margin: 30px 10px;
@@ -419,9 +423,11 @@ export default {
   .contact_h1 { font-size: 1.7rem; margin-top: 40px; }
   .upper-p { font-size: 0.9rem; text-align: left; }
   .middle-h2 { font-size: 1.1rem; text-align: left; }
-  .middle-p, .bottom-p { font-size: 0.85rem; text-align: left; padding: 0; }
-  .bottom-p { text-align: left; }
-  
+  .middle-p, .bottom-p { font-size: 0.85rem; text-align: left; padding: 0; max-width: 100%;}
+  .bottom-p { text-align: left; padding: 0; max-width: 100%;}
+  .bottom{
+    max-width: 350px;
+  }
   .carousel-image { max-width: 370px; }
   
   .lightbox-nav { width: 40px; height: 40px; font-size: 1.5rem; }
